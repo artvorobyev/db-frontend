@@ -1,0 +1,8 @@
+<div class="image" [class.-empty]="!image">
+  <img *ngIf="image; else noImage" [src]="image" alt="" />
+  <ng-template #noImage>
+    <div class="icon text-secondary">
+      <i class="bi bi-music-note-beamed"></i>
+    </div>
+  </ng-template>
+</div>

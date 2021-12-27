@@ -1,0 +1,23 @@
+<div class="root">
+  <div class="row">
+    <div class="col-lg-2">
+      <app-squared-image
+        [image]="album.image_url"
+        class="image"
+      ></app-squared-image>
+    </div>
+    <div class="col pt-2">
+      <p class="uppercase small text-secondary">Альбом</p>
+      <h1 class="display-5 fw-bold mb-3">{{ album.name }}</h1>
+      <h5 class="">
+        Артист:
+        <a
+          *ngFor="let artist of album.artists"
+          [routerLink]="['/artists/' + artist.id]"
+          class="artist-link"
+          >{{ artist.name }}</a
+        >
+      </h5>
+    </div>
+  </div>
+</div>

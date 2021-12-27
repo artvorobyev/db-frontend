@@ -1,1 +1,10 @@
 @import "bootstrap-icons/font/bootstrap-icons";
+
+a {
+  text-decoration: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}

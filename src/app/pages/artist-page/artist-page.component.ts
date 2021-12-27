@@ -5,19 +5,19 @@ import {
   OnDestroyMixin,
   untilComponentDestroyed,
 } from '@w11k/ngx-componentdestroyed';
-import { IArtist } from '../../interfaces/artists.interfaces';
+import { IArtistWithItems } from '../../interfaces/artists.interfaces';
 import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
 
 @Component({
-  selector: 'app-artists-page',
-  templateUrl: './artists-page.component.html',
-  styleUrls: ['./artists-page.component.scss'],
+  selector: 'app-artist-page',
+  templateUrl: './artist-page.component.html',
+  styleUrls: ['./artist-page.component.scss'],
 })
-export class ArtistsPageComponent extends OnDestroyMixin implements OnInit {
+export class ArtistPageComponent extends OnDestroyMixin implements OnInit {
   loading = true;
-  query: string;
-  artists: IArtist[];
+  artist: IArtistWithItems;
+  active = 1;
 
   constructor(
     private apiService: ApiService,
@@ -28,20 +28,19 @@ export class ArtistsPageComponent extends OnDestroyMixin implements OnInit {
   }
 
   ngOnInit(): void {
-    const query = this.route.snapshot.queryParamMap.get('q');
-    if (query) {
-      this.query = query;
+    const artistId = Number(this.route.snapshot.paramMap.get('artistId'));
+    if (artistId) {
       this.apiService
-        .getArtists(query)
+        .getArtist(artistId)
         .pipe(untilComponentDestroyed(this))
         .subscribe(
-          (result) => {
+          (response) => {
             this.loading = false;
-            this.artists = result.data.artists;
+            this.artist = response.data;
           },
           (error: HttpErrorResponse) => {
-            this.loading = false;
-            this.toastService.showError(error.message);
+            console.log(error);
+            this.toastService.showError(error.error.error);
           }
         );
     }

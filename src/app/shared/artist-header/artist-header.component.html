@@ -1,0 +1,15 @@
+<div class="root">
+  <div class="row">
+    <div class="col-lg-2">
+      <app-rounded-image
+        [image]="artist.image_url"
+        class="image"
+      ></app-rounded-image>
+    </div>
+    <div class="col pt-2">
+      <p class="small text-secondary uppercase">Артист</p>
+      <h1 class="display-5 fw-bold mb-3">{{ artist.name }}</h1>
+      <ng-content select="[tabs]"></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+.artist-link {
+  &:not(:last-child)::after {
+    content: ",";
+    margin-right: 5px;
+  }
+}

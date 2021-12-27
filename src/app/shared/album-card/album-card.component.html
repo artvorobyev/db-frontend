@@ -1,0 +1,15 @@
+<div class="card flex-grow-1">
+  <a [routerLink]="['/albums/' + album.id]" class="card-body">
+    <app-squared-image
+      [image]="album.image_url"
+      class="card-img-top"
+    ></app-squared-image>
+    <div class="card-body">
+      <h5 class="card-title">{{ album.name }}</h5>
+      <ng-content select="[artists]"></ng-content>
+      <p *ngIf="album.release_date" class="text-secondary">
+        {{ album.release_date.substring(0, 4) }}
+      </p>
+    </div>
+  </a>
+</div>

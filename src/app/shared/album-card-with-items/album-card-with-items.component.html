@@ -1,0 +1,9 @@
+<app-album-card [album]="album" class="d-flex flex-column flex-grow-1">
+  <ng-container artists>
+    <p *ngIf="album.artists.length" class="text-secondary">
+      <span *ngFor="let artist of album.artists" class="artist">{{
+        artist.name
+      }}</span>
+    </p>
+  </ng-container>
+</app-album-card>

@@ -6,12 +6,14 @@
         position="absolute"
       ></app-spinner>
       <ng-template #loaded>
-        <h4>Артисты по запросу «{{ query }}»</h4>
-        <div class="row mt-5 row-cols-md-4">
-          <div *ngFor="let artist of artists" class="col mb-3">
-            <app-artist-card [artist]="artist"></app-artist-card>
+        <ng-container *ngIf="artists.length; else artistsNotFound">
+          <h4>Артисты по запросу «{{ query }}»</h4>
+          <div class="row mt-5 row-cols-md-4">
+            <div *ngFor="let artist of artists" class="col mb-3">
+              <app-artist-card [artist]="artist"></app-artist-card>
+            </div>
           </div>
-        </div>
+        </ng-container>
       </ng-template>
     </div>
   </app-layout>

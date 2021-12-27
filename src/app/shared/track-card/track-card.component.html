@@ -1,0 +1,13 @@
+<div class="root">
+  <div class="row align-items-center">
+    <div class="col-lg-3">
+      <h5>{{ track.name }}</h5>
+    </div>
+    <div class="col-lg-9">
+      <audio *ngIf="track.file_url" controls class="w-100">
+        <source [src]="track.file_url" type="audio/mpeg" />
+      </audio>
+    </div>
+  </div>
+  <hr />
+</div>

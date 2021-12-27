@@ -1,0 +1,31 @@
+<div class="root">
+  <app-layout>
+    <div class="container mt-5">
+      <app-spinner
+        *ngIf="loading; else loaded"
+        position="absolute"
+      ></app-spinner>
+      <ng-template #loaded>
+        <ng-container *ngIf="albums.length; else albumsNotFound">
+          <h4>Альбомы по запросу «{{ query }}»</h4>
+          <div class="row mt-5 row-cols-md-4">
+            <div
+              *ngFor="let album of albums"
+              class="col mb-3 d-flex flex-column"
+            >
+              <app-album-card-with-items
+                [album]="album"
+                class="d-flex flex-column flex-grow-1"
+              ></app-album-card-with-items>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+    </div>
+  </app-layout>
+</div>
+
+<ng-template #albumsNotFound>
+  <h4 class="text-center">По запросу «{{ query }}»</h4>
+  <h2 class="text-center">Альбомы не найдены</h2>
+</ng-template>
