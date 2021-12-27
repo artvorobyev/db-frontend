@@ -1,0 +1,29 @@
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &.-absolute {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+  }
+}
+
+.spinner {
+  animation: spinner 2s infinite linear;
+  display: table;
+  font-size: 60px;
+}

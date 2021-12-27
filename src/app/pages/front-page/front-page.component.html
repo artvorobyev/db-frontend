@@ -1,0 +1,21 @@
+<div class="root">
+  <app-layout>
+    <div class="content container">
+      <form (submit)="onSubmit($event)" class="input-group input-group-lg mb-3">
+        <select name="type" class="form-select" [(ngModel)]="type">
+          <option *ngFor="let option of options" [value]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+        <input
+          type="text"
+          name="q"
+          class="form-control"
+          placeholder="Поиск"
+          [(ngModel)]="q"
+        />
+        <button class="btn btn-success"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+  </app-layout>
+</div>

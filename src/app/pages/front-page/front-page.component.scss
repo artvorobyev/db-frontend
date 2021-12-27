@@ -1,0 +1,12 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+
+  max-width: 800px;
+}
+
+.form-select {
+  max-width: 220px;
+}
