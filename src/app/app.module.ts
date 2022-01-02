@@ -25,6 +25,8 @@ import { AlbumsPageComponent } from './pages/albums-page/albums-page.component';
 import { AlbumCardWithItemsComponent } from './shared/album-card-with-items/album-card-with-items.component';
 import { TrackCardWithDetailsComponent } from './shared/track-card-with-details/track-card-with-details.component';
 import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
+import { LoginPopupComponent } from './layout/login-popup/login-popup.component';
+import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
     AlbumCardWithItemsComponent,
     TrackCardWithDetailsComponent,
     TracksPageComponent,
+    LoginPopupComponent,
+    CabinetPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,5 +62,6 @@ import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [LoginPopupComponent],
 })
 export class AppModule {}

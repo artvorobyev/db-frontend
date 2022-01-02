@@ -10,13 +10,15 @@ import {
   IArtistsSearchResponse,
   IArtistWithItems,
 } from '../interfaces/artists.interfaces';
+import { ILoginParams } from '../interfaces/auth.interfaces';
 import { ITracksSearchResponse } from '../interfaces/tracks.interfaces';
+import { IUser, IUserResponse } from '../interfaces/user.interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  host = 'http://localhost:3001';
+  host = 'http://backend.music.local';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -46,14 +48,43 @@ export class ApiService {
     });
   }
 
+  login(params: ILoginParams): Observable<IResponse<{ message: string }>> {
+    return this.post('login', { ...params });
+  }
+
+  getCurrentUser(): Observable<IResponse<IUserResponse>> {
+    return this.get<IUserResponse>('user');
+  }
+
   get<T>(
     endpoint: string,
     params?: { [key: string]: string | number | boolean }
   ): Observable<IResponse<T>> {
     return this.httpClient.get<IResponse<T>>(`${this.host}/${endpoint}`, {
       params,
-      // withCredentials: true,
+      withCredentials: true,
       headers: new HttpHeaders(),
     });
+  }
+
+  post<T>(
+    endpoint: string,
+    params?: { [key: string]: string | number | boolean | object }
+  ): Observable<IResponse<T>> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+    headers.append('GET', 'POST');
+
+    return this.httpClient.post<IResponse<T>>(
+      `${this.host}/${endpoint}`,
+      { ...params },
+      {
+        withCredentials: true,
+        headers: headers,
+      }
+    );
   }
 }

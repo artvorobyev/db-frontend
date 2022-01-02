@@ -41,7 +41,7 @@ export class AlbumsPageComponent extends OnDestroyMixin implements OnInit {
           },
           (error: HttpErrorResponse) => {
             this.loading = false;
-            this.toastService.showError(error.message);
+            this.toastService.showError(error.error.error || error.message);
           }
         );
     }

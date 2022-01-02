@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h4 class="modal-title">Войти</h4>
+  <button type="button" class="btn btn-lg close" (click)="close()">
+    <i class="bi bi-x-circle"></i>
+  </button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="E-mail"
+        [(ngModel)]="email"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <label for="floatingInput">E-mail</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Пароль"
+        [(ngModel)]="password"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <label for="floatingPassword">Пароль</label>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    [disabled]="loading"
+    class="btn btn-outline-success"
+    (click)="onSubmit()"
+  >
+    Войти
+    <ng-container *ngIf="loading">
+      <span
+        class="spinner-border spinner-border-sm"
+        role="status"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Loading...</span>
+    </ng-container>
+  </button>
+</div>

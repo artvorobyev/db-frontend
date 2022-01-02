@@ -1,0 +1,9 @@
+.icon {
+  font-size: larger;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}

@@ -8,3 +8,8 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.15rem;
 }
+
+.close:focus {
+  outline: none;
+  box-shadow: none;
+}
