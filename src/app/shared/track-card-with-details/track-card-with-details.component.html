@@ -1,0 +1,18 @@
+<app-track-card [track]="track">
+  <ng-container details>
+    <p class="small">
+      Артист:
+      <span *ngIf="track.artists.length">
+        <a
+          *ngFor="let artist of track.artists"
+          [routerLink]="['/artists/' + artist.id]"
+          class="artist"
+          >{{ artist.name }}</a
+        >
+      </span>
+      <br />
+      Альбом:
+      <a [routerLink]="['/albums/' + track.album.id]">{{ track.album.name }}</a>
+    </p>
+  </ng-container>
+</app-track-card>

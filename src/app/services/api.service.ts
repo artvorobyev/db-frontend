@@ -10,6 +10,7 @@ import {
   IArtistsSearchResponse,
   IArtistWithItems,
 } from '../interfaces/artists.interfaces';
+import { ITracksSearchResponse } from '../interfaces/tracks.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +38,12 @@ export class ApiService {
 
   getAlbum(albumId: number): Observable<IResponse<IAlbumWithItems>> {
     return this.get<IAlbumWithItems>(`albums/${albumId}`);
+  }
+
+  getTracks(query: string): Observable<IResponse<ITracksSearchResponse>> {
+    return this.get<ITracksSearchResponse>('tracks', {
+      query: query,
+    });
   }
 
   get<T>(

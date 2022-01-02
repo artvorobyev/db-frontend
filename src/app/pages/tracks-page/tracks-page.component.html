@@ -1,0 +1,27 @@
+<div class="root">
+  <app-layout>
+    <div class="container mt-5">
+      <app-spinner
+        *ngIf="loading; else loaded"
+        position="absolute"
+      ></app-spinner>
+      <ng-template #loaded>
+        <ng-container *ngIf="tracks.length; else tracksNotFound">
+          <h4 class="mb-3">Треки по запросу «{{ query }}»</h4>
+          <hr />
+          <div *ngFor="let track of tracks">
+            <app-track-card-with-details
+              [track]="track"
+              class="d-flex flex-column flex-grow-1"
+            ></app-track-card-with-details>
+          </div>
+        </ng-container>
+      </ng-template>
+    </div>
+  </app-layout>
+</div>
+
+<ng-template #tracksNotFound>
+  <h4 class="text-center">По запросу «{{ query }}»</h4>
+  <h2 class="text-center mb-5">Треки не найдены</h2>
+</ng-template>

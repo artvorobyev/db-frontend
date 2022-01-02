@@ -8,7 +8,7 @@
       <ng-template #loaded>
         <ng-container *ngIf="albums.length; else albumsNotFound">
           <h4>Альбомы по запросу «{{ query }}»</h4>
-          <div class="row mt-5 row-cols-md-4">
+          <div class="row mt-5 mb-5 row-cols-md-4">
             <div
               *ngFor="let album of albums"
               class="col mb-3 d-flex flex-column"
@@ -27,5 +27,5 @@
 
 <ng-template #albumsNotFound>
   <h4 class="text-center">По запросу «{{ query }}»</h4>
-  <h2 class="text-center">Альбомы не найдены</h2>
+  <h2 class="text-center mb-5">Альбомы не найдены</h2>
 </ng-template>

@@ -5,6 +5,7 @@ import { AlbumsPageComponent } from './pages/albums-page/albums-page.component';
 import { ArtistPageComponent } from './pages/artist-page/artist-page.component';
 import { ArtistsPageComponent } from './pages/artists-page/artists-page.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
+import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'albums/:albumId',
     component: AlbumPageComponent,
+  },
+  {
+    path: 'tracks',
+    component: TracksPageComponent,
   },
 ];
 

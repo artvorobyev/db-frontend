@@ -23,6 +23,8 @@ import { AlbumPageComponent } from './pages/album-page/album-page.component';
 import { AlbumHeaderComponent } from './shared/album-header/album-header.component';
 import { AlbumsPageComponent } from './pages/albums-page/albums-page.component';
 import { AlbumCardWithItemsComponent } from './shared/album-card-with-items/album-card-with-items.component';
+import { TrackCardWithDetailsComponent } from './shared/track-card-with-details/track-card-with-details.component';
+import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { AlbumCardWithItemsComponent } from './shared/album-card-with-items/albu
     AlbumHeaderComponent,
     AlbumsPageComponent,
     AlbumCardWithItemsComponent,
+    TrackCardWithDetailsComponent,
+    TracksPageComponent,
   ],
   imports: [
     BrowserModule,
