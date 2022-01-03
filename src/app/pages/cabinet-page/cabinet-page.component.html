@@ -1,1 +1,62 @@
-<p>cabinet-page works!</p>
+<div class="root">
+  <app-layout>
+    <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
+    <ng-template #loaded>
+      <h4>Моя музыка</h4>
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills mt-3">
+        <li [ngbNavItem]="1">
+          <a
+            ngbNavLink
+            [class.bg-success]="active == 1"
+            [class.link-success]="active != 1"
+            >Плейлисты</a
+          >
+          <ng-template ngbNavContent> ... </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a
+            ngbNavLink
+            [class.bg-success]="active == 2"
+            [class.link-success]="active != 2"
+            >Треки</a
+          >
+          <ng-template ngbNavContent>
+            <hr />
+            <div *ngFor="let track of tracks" class="mb-3">
+              <app-track-card-with-details
+                [track]="track"
+              ></app-track-card-with-details>
+            </div>
+          </ng-template>
+        </li>
+        <li
+          *ngIf="active == 2"
+          ngbDropdown
+          display="dynamic"
+          placement="bottom-right"
+          class="nav-item dropdown ms-auto"
+        >
+          <a
+            ngbDropdownToggle
+            class="btn btn-outline-success dropdown-toggle"
+            href="javascript:void(0)"
+            >{{ trackFiltersLabels[tracksFilter] }}</a
+          >
+          <ul ngbDropdownMenu class="dropdown-menu">
+            <li *ngFor="let item of trackFiltersLabels; index as i">
+              <a
+                href="javascript:void(0)"
+                class="dropdown-item"
+                [class.active]="tracksFilter === i"
+                [class.bg-success]="tracksFilter === i"
+                (click)="filterTracks(i)"
+                >{{ item }}</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav" class="mt-3"></div>
+    </ng-template>
+  </app-layout>
+</div>

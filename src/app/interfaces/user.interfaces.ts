@@ -1,7 +1,10 @@
+import { ITrackWithDetails } from './tracks.interfaces';
+
 export interface IUser {
   id: number;
   login: string;
   email: string;
+  tracks: ITrackWithDetails[];
 }
 
 export interface IUserResponse {
