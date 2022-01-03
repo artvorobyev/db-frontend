@@ -7,3 +7,9 @@ export interface IUser {
 export interface IUserResponse {
   user: IUser;
 }
+
+export interface ICreateUserData {
+  login: string;
+  email: string;
+  password: string;
+}

@@ -12,7 +12,11 @@ import {
 } from '../interfaces/artists.interfaces';
 import { ILoginParams } from '../interfaces/auth.interfaces';
 import { ITracksSearchResponse } from '../interfaces/tracks.interfaces';
-import { IUser, IUserResponse } from '../interfaces/user.interfaces';
+import {
+  ICreateUserData,
+  IUser,
+  IUserResponse,
+} from '../interfaces/user.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -58,6 +62,12 @@ export class ApiService {
 
   getCurrentUser(): Observable<IResponse<IUserResponse>> {
     return this.get<IUserResponse>('user');
+  }
+
+  createUser(
+    data: ICreateUserData
+  ): Observable<IResponse<{ message: string }>> {
+    return this.post('user', { ...data });
   }
 
   get<T>(

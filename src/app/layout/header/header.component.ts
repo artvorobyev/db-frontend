@@ -11,6 +11,7 @@ import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
 import { UserService } from '../../services/user.service';
 import { LoginPopupComponent } from '../login-popup/login-popup.component';
+import { SignupPopupComponent } from '../signup-popup/signup-popup.component';
 
 @Component({
   selector: 'app-header',
@@ -35,6 +36,11 @@ export class HeaderComponent extends OnDestroyMixin implements OnInit {
 
   openLoginPopup(): void {
     const modalRef = this.modalService.open(LoginPopupComponent);
+    modalRef.componentInstance.instance = modalRef;
+  }
+
+  openSignUpPopup(): void {
+    const modalRef = this.modalService.open(SignupPopupComponent);
     modalRef.componentInstance.instance = modalRef;
   }
 

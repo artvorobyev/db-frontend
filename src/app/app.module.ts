@@ -27,6 +27,7 @@ import { TrackCardWithDetailsComponent } from './shared/track-card-with-details/
 import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
 import { LoginPopupComponent } from './layout/login-popup/login-popup.component';
 import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.component';
+import { SignupPopupComponent } from './layout/signup-popup/signup-popup.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.componen
     TracksPageComponent,
     LoginPopupComponent,
     CabinetPageComponent,
+    SignupPopupComponent,
   ],
   imports: [
     BrowserModule,
