@@ -6,13 +6,15 @@
         <a
           *ngFor="let artist of track.artists"
           [routerLink]="['/artists/' + artist.id]"
-          class="artist"
+          class="artist link-success"
           >{{ artist.name }}</a
         >
       </span>
       <br />
       Альбом:
-      <a [routerLink]="['/albums/' + track.album.id]">{{ track.album.name }}</a>
+      <a [routerLink]="['/albums/' + track.album.id]" class="link-success">{{
+        track.album.name
+      }}</a>
     </p>
   </ng-container>
 </app-track-card>

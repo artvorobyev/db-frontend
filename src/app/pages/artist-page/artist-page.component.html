@@ -6,7 +6,12 @@
         <ng-container tabs>
           <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills">
             <li [ngbNavItem]="1">
-              <a ngbNavLink>Альбомы</a>
+              <a
+                ngbNavLink
+                [class.bg-success]="active == 1"
+                [class.link-success]="active != 1"
+                >Альбомы</a
+              >
               <ng-template ngbNavContent>
                 <div class="row mt-5 row-cols-md-4">
                   <div
@@ -22,7 +27,12 @@
               </ng-template>
             </li>
             <li [ngbNavItem]="2">
-              <a ngbNavLink>Треки</a>
+              <a
+                ngbNavLink
+                [class.bg-success]="active == 2"
+                [class.link-success]="active != 2"
+                >Треки</a
+              >
               <ng-template ngbNavContent>
                 <hr />
                 <div *ngFor="let track of artist.tracks" class="mb-3">

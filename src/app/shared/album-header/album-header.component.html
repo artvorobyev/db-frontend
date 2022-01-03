@@ -14,7 +14,7 @@
         <a
           *ngFor="let artist of album.artists"
           [routerLink]="['/artists/' + artist.id]"
-          class="artist-link"
+          class="artist-link link-success"
           >{{ artist.name }}</a
         >
       </h5>
