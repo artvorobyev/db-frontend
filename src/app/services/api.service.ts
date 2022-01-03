@@ -11,6 +11,7 @@ import {
   IArtistWithItems,
 } from '../interfaces/artists.interfaces';
 import { ILoginParams } from '../interfaces/auth.interfaces';
+import { ITrackReaction } from '../interfaces/reactions.intrefaces';
 import { ITracksSearchResponse } from '../interfaces/tracks.interfaces';
 import {
   ICreateUserData,
@@ -77,6 +78,18 @@ export class ApiService {
     return this.put('user', { ...data });
   }
 
+  createTrackReaction(
+    data: ITrackReaction
+  ): Observable<IResponse<{ message: string }>> {
+    return this.post('track-reaction', { ...data });
+  }
+
+  deleteTrackReaction(
+    trackId: number
+  ): Observable<IResponse<{ message: string }>> {
+    return this.delete('track-reaction', { track_id: trackId });
+  }
+
   get<T>(
     endpoint: string,
     params?: { [key: string]: string | number | boolean }
@@ -88,7 +101,7 @@ export class ApiService {
     });
   }
 
-  post<T>(
+  private post<T>(
     endpoint: string,
     params?: { [key: string]: string | number | boolean | object }
   ): Observable<IResponse<T>> {
@@ -109,7 +122,7 @@ export class ApiService {
     );
   }
 
-  put<T>(
+  private put<T>(
     endpoint: string,
     params?: { [key: string]: string | number | boolean | object }
   ): Observable<IResponse<T>> {
@@ -128,5 +141,23 @@ export class ApiService {
         headers: headers,
       }
     );
+  }
+
+  private delete<T>(
+    endpoint: string,
+    params?: { [key: string]: string | number | boolean }
+  ): Observable<IResponse<T>> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+    headers.append('GET', 'POST');
+
+    return this.httpClient.delete<IResponse<T>>(`${this.host}/${endpoint}`, {
+      withCredentials: true,
+      headers: headers,
+      params: params,
+    });
   }
 }

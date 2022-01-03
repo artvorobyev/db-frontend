@@ -4,10 +4,42 @@
       <h5>{{ track.name }}</h5>
       <ng-content select="[details]"></ng-content>
     </div>
-    <div class="col-lg-9">
+    <div class="col-lg-7">
       <audio *ngIf="track.file_url" controls class="w-100">
         <source [src]="track.file_url" type="audio/mpeg" />
       </audio>
+    </div>
+    <div class="col-lg-2">
+      <button
+        type="button"
+        class="btn btn-lg btn-link link-dark"
+        placement="bottom"
+        ngbTooltip="Добавить в плейлист"
+      >
+        <i class="bi bi-plus-lg"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-lg btn-link"
+        [class.link-success]="isLiked"
+        [class.link-dark]="!isLiked"
+        placement="bottom"
+        ngbTooltip="Нравится"
+        (click)="like()"
+      >
+        <i class="bi bi-emoji-heart-eyes"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-lg btn-link"
+        [class.link-danger]="isDisliked"
+        [class.link-dark]="!isDisliked"
+        placement="bottom"
+        ngbTooltip="Не нравится"
+        (click)="dislike()"
+      >
+        <i class="bi bi-emoji-frown"></i>
+      </button>
     </div>
   </div>
   <hr />
