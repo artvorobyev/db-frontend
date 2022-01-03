@@ -1,6 +1,6 @@
 <div class="root">
   <app-layout>
-    <div class="content container">
+    <div class="content">
       <form (submit)="onSubmit($event)" class="input-group input-group-lg mb-3">
         <select name="type" class="form-select" [(ngModel)]="type">
           <option *ngFor="let option of options" [value]="option.value">

@@ -28,6 +28,7 @@ import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
 import { LoginPopupComponent } from './layout/login-popup/login-popup.component';
 import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.component';
 import { SignupPopupComponent } from './layout/signup-popup/signup-popup.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { SignupPopupComponent } from './layout/signup-popup/signup-popup.compone
     LoginPopupComponent,
     CabinetPageComponent,
     SignupPopupComponent,
+    SettingsPageComponent,
   ],
   imports: [
     BrowserModule,

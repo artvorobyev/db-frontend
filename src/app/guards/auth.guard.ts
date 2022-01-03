@@ -15,6 +15,10 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
+    if (this.userService.hasUser()) {
+      return of(true);
+    }
+
     return this.apiService.getCurrentUser().pipe(
       map((response) => {
         if (response.data.user) {

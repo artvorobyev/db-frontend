@@ -25,7 +25,11 @@
           >
           <ul ngbDropdownMenu class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Моя музыка</a></li>
-            <li><a class="dropdown-item" href="#">Мой профиль</a></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['settings']"
+                >Мой аккаунт</a
+              >
+            </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a

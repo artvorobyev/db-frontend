@@ -7,6 +7,7 @@ import { ArtistPageComponent } from './pages/artist-page/artist-page.component';
 import { ArtistsPageComponent } from './pages/artists-page/artists-page.component';
 import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
 
 const routes: Routes = [
@@ -43,6 +44,14 @@ const routes: Routes = [
   {
     path: 'cabinet',
     component: CabinetPageComponent,
+    canActivate: [AuthGuard],
+    data: {
+      isPrivate: true,
+    },
+  },
+  {
+    path: 'settings',
+    component: SettingsPageComponent,
     canActivate: [AuthGuard],
     data: {
       isPrivate: true,

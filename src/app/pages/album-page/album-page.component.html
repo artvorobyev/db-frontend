@@ -1,19 +1,14 @@
 <div class="root">
   <app-layout>
-    <div class="container mt-5">
-      <app-spinner
-        *ngIf="loading; else loaded"
-        position="absolute"
-      ></app-spinner>
-      <ng-template #loaded>
-        <app-album-header [album]="album"></app-album-header>
-        <hr class="mt-5" />
-        <div class="tracks">
-          <div *ngFor="let track of album.tracks" class="mb-3">
-            <app-track-card [track]="track"></app-track-card>
-          </div>
+    <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
+    <ng-template #loaded>
+      <app-album-header [album]="album"></app-album-header>
+      <hr class="mt-5" />
+      <div class="tracks">
+        <div *ngFor="let track of album.tracks" class="mb-3">
+          <app-track-card [track]="track"></app-track-card>
         </div>
-      </ng-template>
-    </div>
+      </div>
+    </ng-template>
   </app-layout>
 </div>

@@ -1,45 +1,40 @@
 <div class="root">
   <app-layout>
-    <div class="container mt-5">
-      <app-spinner
-        *ngIf="loading; else loaded"
-        position="absolute"
-      ></app-spinner>
-      <ng-template #loaded>
-        <app-artist-header [artist]="artist">
-          <ng-container tabs>
-            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills">
-              <li [ngbNavItem]="1">
-                <a ngbNavLink>Альбомы</a>
-                <ng-template ngbNavContent>
-                  <div class="row mt-5 row-cols-md-4">
-                    <div
-                      *ngFor="let album of artist.albums"
-                      class="col mb-3 d-flex flex-column"
-                    >
-                      <app-album-card
-                        [album]="album"
-                        class="d-flex flex-column flex-grow-1"
-                      ></app-album-card>
-                    </div>
+    <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
+    <ng-template #loaded>
+      <app-artist-header [artist]="artist">
+        <ng-container tabs>
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills">
+            <li [ngbNavItem]="1">
+              <a ngbNavLink>Альбомы</a>
+              <ng-template ngbNavContent>
+                <div class="row mt-5 row-cols-md-4">
+                  <div
+                    *ngFor="let album of artist.albums"
+                    class="col mb-3 d-flex flex-column"
+                  >
+                    <app-album-card
+                      [album]="album"
+                      class="d-flex flex-column flex-grow-1"
+                    ></app-album-card>
                   </div>
-                </ng-template>
-              </li>
-              <li [ngbNavItem]="2">
-                <a ngbNavLink>Треки</a>
-                <ng-template ngbNavContent>
-                  <hr />
-                  <div *ngFor="let track of artist.tracks" class="mb-3">
-                    <app-track-card [track]="track"></app-track-card>
-                  </div>
-                </ng-template>
-              </li>
-            </ul>
-          </ng-container>
-        </app-artist-header>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+              <a ngbNavLink>Треки</a>
+              <ng-template ngbNavContent>
+                <hr />
+                <div *ngFor="let track of artist.tracks" class="mb-3">
+                  <app-track-card [track]="track"></app-track-card>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+        </ng-container>
+      </app-artist-header>
 
-        <div [ngbNavOutlet]="nav" class="mt-5 mb-5"></div>
-      </ng-template>
-    </div>
+      <div [ngbNavOutlet]="nav" class="mt-5 mb-5"></div>
+    </ng-template>
   </app-layout>
 </div>

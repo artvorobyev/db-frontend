@@ -18,6 +18,6 @@ export class UserService {
   }
 
   hasUser(): boolean {
-    return this.data === null;
+    return !!this.data;
   }
 }
