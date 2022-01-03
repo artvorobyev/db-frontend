@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IAlbumWithItems } from '../../interfaces/albums.interfaces';
+import { IAlbumWithArtists } from '../../interfaces/albums.interfaces';
 
 @Component({
   selector: 'app-album-card-with-items',
@@ -7,7 +7,7 @@ import { IAlbumWithItems } from '../../interfaces/albums.interfaces';
   styleUrls: ['./album-card-with-items.component.scss'],
 })
 export class AlbumCardWithItemsComponent implements OnInit {
-  @Input() album: IAlbumWithItems;
+  @Input() album: IAlbumWithArtists;
 
   constructor() {}
 

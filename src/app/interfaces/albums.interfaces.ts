@@ -8,11 +8,14 @@ export interface IAlbum {
   release_date: string;
 }
 
-export interface IAlbumWithItems extends IAlbum {
+export interface IAlbumWithArtists extends IAlbum {
   artists: IArtist[];
+}
+
+export interface IAlbumWithItems extends IAlbumWithArtists {
   tracks: ITrack[];
 }
 
 export interface IAlbumsSearchResponse {
-  albums: IAlbumWithItems[];
+  albums: IAlbumWithArtists[];
 }

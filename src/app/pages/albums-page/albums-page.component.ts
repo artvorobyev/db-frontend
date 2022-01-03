@@ -5,7 +5,7 @@ import {
   OnDestroyMixin,
   untilComponentDestroyed,
 } from '@w11k/ngx-componentdestroyed';
-import { IAlbumWithItems } from '../../interfaces/albums.interfaces';
+import { IAlbumWithArtists } from '../../interfaces/albums.interfaces';
 import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
 
@@ -17,7 +17,7 @@ import { ToastService } from '../../services/toast.service';
 export class AlbumsPageComponent extends OnDestroyMixin implements OnInit {
   loading = true;
   query: string;
-  albums: IAlbumWithItems[];
+  albums: IAlbumWithArtists[];
 
   constructor(
     private apiService: ApiService,
