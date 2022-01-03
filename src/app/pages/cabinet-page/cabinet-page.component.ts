@@ -55,4 +55,9 @@ export class CabinetPageComponent extends OnDestroyMixin implements OnInit {
       (track) => filter === Number(track.reaction?.is_positive)
     );
   }
+
+  onSelectTrackFilter(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    this.filterTracks(Number(target.value));
+  }
 }
