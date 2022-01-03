@@ -52,6 +52,10 @@ export class ApiService {
     return this.post('login', { ...params });
   }
 
+  logout(): Observable<IResponse<{ message: string }>> {
+    return this.post('logout');
+  }
+
   getCurrentUser(): Observable<IResponse<IUserResponse>> {
     return this.get<IUserResponse>('user');
   }

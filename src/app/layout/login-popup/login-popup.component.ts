@@ -5,6 +5,7 @@ import {
   OnDestroyMixin,
   untilComponentDestroyed,
 } from '@w11k/ngx-componentdestroyed';
+import { reloadPage } from '../../helpers/helpers';
 import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
 
@@ -47,7 +48,7 @@ export class LoginPopupComponent extends OnDestroyMixin implements OnInit {
       .pipe(untilComponentDestroyed(this))
       .subscribe(
         () => {
-          window.location.assign(window.location.pathname);
+          reloadPage();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
