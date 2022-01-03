@@ -1,0 +1,16 @@
+<button
+  [disabled]="disabled || loading"
+  [type]="type"
+  class="btn btn-{{ color }}"
+>
+  <ng-content></ng-content>
+  <ng-container *ngIf="loading">
+    &nbsp;
+    <span
+      class="spinner-border spinner-border-sm"
+      role="status"
+      aria-hidden="true"
+    ></span>
+    <span class="visually-hidden">Loading...</span>
+  </ng-container>
+</button>

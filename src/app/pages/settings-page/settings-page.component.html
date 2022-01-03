@@ -1,5 +1,108 @@
 <div class="root">
   <app-layout>
     <h4>Настройки аккаунта</h4>
+    <div class="row mt-3">
+      <div class="col-4 col-lg-2">
+        <ng-container tabs>
+          <div
+            ngbNav
+            #nav="ngbNav"
+            [(activeId)]="active"
+            class="list-group"
+            id="list-tab"
+            role="tablist"
+          >
+            <ng-container [ngbNavItem]="1">
+              <a
+                ngbNavLink
+                class="list-group-item list-group-item-action"
+                [class.bg-success]="active == 1"
+                >E-mail</a
+              >
+              <ng-template ngbNavContent>
+                <h5 class="mb-4">Изменить e-mail</h5>
+                <form (ngSubmit)="updateEmail($event)">
+                  <div class="row mb-4">
+                    <label class="col-sm-3 col-form-label">E-mail</label>
+                    <div class="col-sm-9">
+                      <input
+                        type="email"
+                        class="form-control"
+                        [(ngModel)]="email"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <label class="col-sm-3 col-form-label">Пароль</label>
+                    <div class="col-sm-9">
+                      <input
+                        type="password"
+                        class="form-control"
+                        [(ngModel)]="password"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <div class="form-text">
+                        Необходим для подтверждения смены адреса электронной
+                        почты
+                      </div>
+                    </div>
+                  </div>
+                  <app-button type="submit" [loading]="loading"
+                    >Сохранить</app-button
+                  >
+                </form>
+              </ng-template>
+            </ng-container>
+            <ng-container [ngbNavItem]="2">
+              <a
+                ngbNavLink
+                class="list-group-item list-group-item-action"
+                [class.bg-success]="active == 2"
+                >Пароль</a
+              >
+              <ng-template ngbNavContent>
+                <h5 class="mb-4">Изменить пароль</h5>
+                <form (ngSubmit)="updatePassword($event)">
+                  <div class="row mb-4">
+                    <label class="col-sm-3 col-form-label"
+                      >Текущий пароль</label
+                    >
+                    <div class="col-sm-9">
+                      <input
+                        type="password"
+                        class="form-control"
+                        [(ngModel)]="currentPassword"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <label class="col-sm-3 col-form-label">Новый пароль</label>
+                    <div class="col-sm-9">
+                      <input
+                        type="password"
+                        class="form-control"
+                        [(ngModel)]="newPassword"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
+                  </div>
+                  <app-button type="submit" [loading]="loading"
+                    >Сохранить</app-button
+                  >
+                </form>
+              </ng-template>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+          <div [ngbNavOutlet]="nav" class=""></div>
+        </div>
+      </div>
+    </div>
   </app-layout>
 </div>

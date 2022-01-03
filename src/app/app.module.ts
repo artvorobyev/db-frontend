@@ -29,6 +29,7 @@ import { LoginPopupComponent } from './layout/login-popup/login-popup.component'
 import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.component';
 import { SignupPopupComponent } from './layout/signup-popup/signup-popup.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { ButtonComponent } from './shared/button/button.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
     CabinetPageComponent,
     SignupPopupComponent,
     SettingsPageComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

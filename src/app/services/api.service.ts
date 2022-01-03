@@ -14,6 +14,7 @@ import { ILoginParams } from '../interfaces/auth.interfaces';
 import { ITracksSearchResponse } from '../interfaces/tracks.interfaces';
 import {
   ICreateUserData,
+  IUpdateUserData,
   IUser,
   IUserResponse,
 } from '../interfaces/user.interfaces';
@@ -70,6 +71,12 @@ export class ApiService {
     return this.post('user', { ...data });
   }
 
+  updateUser(
+    data: IUpdateUserData
+  ): Observable<IResponse<{ message: string }>> {
+    return this.put('user', { ...data });
+  }
+
   get<T>(
     endpoint: string,
     params?: { [key: string]: string | number | boolean }
@@ -93,6 +100,27 @@ export class ApiService {
     headers.append('GET', 'POST');
 
     return this.httpClient.post<IResponse<T>>(
+      `${this.host}/${endpoint}`,
+      { ...params },
+      {
+        withCredentials: true,
+        headers: headers,
+      }
+    );
+  }
+
+  put<T>(
+    endpoint: string,
+    params?: { [key: string]: string | number | boolean | object }
+  ): Observable<IResponse<T>> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+    headers.append('GET', 'POST');
+
+    return this.httpClient.put<IResponse<T>>(
       `${this.host}/${endpoint}`,
       { ...params },
       {

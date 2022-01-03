@@ -13,3 +13,9 @@ export interface ICreateUserData {
   email: string;
   password: string;
 }
+
+export interface IUpdateUserData {
+  email?: string;
+  password: string;
+  newPassword?: string;
+}

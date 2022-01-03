@@ -13,9 +13,15 @@ export class ToastService {
     this.toasts.push({ textOrTpl, ...options });
   }
 
-  showError(textOrTpl: string): void {
-    this.show(textOrTpl || 'Произошла ошибка, попробуйте обновить страницу', {
+  showError(text: string): void {
+    this.show(text || 'Произошла ошибка, попробуйте обновить страницу', {
       classname: 'bg-danger text-light',
+    });
+  }
+
+  showSuccess(text: string): void {
+    this.show(text, {
+      classname: 'bg-success text-light',
     });
   }
 
