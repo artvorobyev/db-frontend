@@ -1,0 +1,20 @@
+<div class="root">
+  <app-layout>
+    <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
+    <ng-template #loaded>
+      <ng-container *ngIf="playlists.length; else playlistsNotFound">
+        <h4>Плейлисты по запросу «{{ query }}»</h4>
+
+        <hr />
+        <div *ngFor="let playlist of playlists" class="mb-3">
+          <app-playlist-card [playlist]="playlist"></app-playlist-card>
+        </div>
+      </ng-container>
+    </ng-template>
+  </app-layout>
+</div>
+
+<ng-template #playlistsNotFound>
+  <h4 class="text-center">По запросу «{{ query }}»</h4>
+  <h2 class="text-center">Плейлисты не найдены</h2>
+</ng-template>

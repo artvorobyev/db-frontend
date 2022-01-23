@@ -1,3 +1,4 @@
+import { IPlaylist } from './playlists.interfaces';
 import { ITrackWithDetails } from './tracks.interfaces';
 
 export interface IUser {
@@ -5,6 +6,7 @@ export interface IUser {
   login: string;
   email: string;
   tracks: ITrackWithDetails[];
+  playlists: IPlaylist[];
 }
 
 export interface IUserResponse {

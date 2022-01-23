@@ -1,6 +1,11 @@
 @import "bootstrap-icons/font/bootstrap-icons";
 
-a {
+body.modal-open {
+  overflow: hidden;
+}
+
+a,
+.btn-link {
   text-decoration: none;
 }
 

@@ -11,7 +11,12 @@
             [class.link-success]="active != 1"
             >Плейлисты</a
           >
-          <ng-template ngbNavContent> ... </ng-template>
+          <ng-template ngbNavContent>
+            <hr />
+            <div *ngFor="let playlist of playlists" class="mb-3">
+              <app-playlist-card [playlist]="playlist"></app-playlist-card>
+            </div>
+          </ng-template>
         </li>
         <li [ngbNavItem]="2">
           <a
@@ -37,6 +42,28 @@
           >
             <option
               *ngFor="let item of trackFiltersLabels; index as i"
+              [value]="i"
+            >
+              {{ item }}
+            </option>
+          </select>
+        </li>
+        <li *ngIf="active == 1" class="ms-auto">
+          <a
+            href="javascript:void(0)"
+            class="btn btn-link link-success"
+            (click)="openCreatePlaylistPopup()"
+            >Создать плейлист</a
+          >
+        </li>
+        <li *ngIf="active == 1">
+          <select
+            class="form-select"
+            [(ngModel)]="playlistsFilter"
+            (change)="onSelectPlaylistFilter($event)"
+          >
+            <option
+              *ngFor="let item of playlistsFilterLabels; index as i"
               [value]="i"
             >
               {{ item }}

@@ -9,21 +9,49 @@
         <source [src]="track.file_url" type="audio/mpeg" />
       </audio>
     </div>
-    <div class="col-lg-2">
+    <div
+      ngbDropdown
+      placement="bottom center"
+      class="col-lg-2 d-flex flex-row justify-content-end"
+    >
       <button
         type="button"
         class="btn btn-lg btn-link link-dark"
-        placement="bottom"
+        placement="top"
         ngbTooltip="Добавить в плейлист"
+        ngbDropdownToggle
       >
         <i class="bi bi-plus-lg"></i>
+        <ul
+          *ngIf="playlists$ | async as playlists"
+          ngbDropdownMenu
+          class="dropdown-menu"
+        >
+          <li *ngFor="let playlist of playlists">
+            <a
+              href="javascript:void(0)"
+              class="dropdown-item"
+              (click)="addTrackToPlaylist(playlist)"
+              >{{ playlist.name }}</a
+            >
+          </li>
+          <li *ngIf="playlists.length"><hr class="dropdown-divider" /></li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="javascript:void(0)"
+              (click)="openCreatePlaylistPopup()"
+              >Новый плейлист</a
+            >
+          </li>
+        </ul>
       </button>
       <button
         type="button"
         class="btn btn-lg btn-link"
         [class.link-success]="isLiked"
         [class.link-dark]="!isLiked"
-        placement="bottom"
+        placement="top"
         ngbTooltip="Нравится"
         (click)="like()"
       >
@@ -34,7 +62,7 @@
         class="btn btn-lg btn-link"
         [class.link-danger]="isDisliked"
         [class.link-dark]="!isDisliked"
-        placement="bottom"
+        placement="top"
         ngbTooltip="Не нравится"
         (click)="dislike()"
       >

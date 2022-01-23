@@ -1,0 +1,61 @@
+<div class="root">
+  <app-layout>
+    <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
+    <ng-template #loaded>
+      <div class="row">
+        <div class="col-md-10">
+          <p class="small text-secondary uppercase">Плейлист</p>
+          <h1 class="display-5 fw-bold mb-3">{{ playlist.name }}</h1>
+          <p>
+            Автор: <strong>{{ playlist.author_name }}</strong>
+          </p>
+        </div>
+        <div
+          class="col-md-2 d-flex flex-row align-items-center justify-content-end"
+        >
+          <button
+            type="button"
+            class="btn btn-lg btn-link link-dark"
+            placement="top"
+            [ngbTooltip]="
+              playlist.is_public ? 'Публичный плейлист' : 'Закрытый плейлист'
+            "
+          >
+            <i
+              class="bi"
+              [class.bi-globe2]="playlist.is_public"
+              [class.bi-shield-lock]="!playlist.is_public"
+            ></i>
+          </button>
+          <button
+            *ngIf="isEditable"
+            type="button"
+            class="btn btn-lg btn-link link-dark"
+            placement="top"
+            ngbTooltip="Редактировать"
+            (click)="editPlaylist()"
+          >
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button
+            *ngIf="isEditable"
+            type="button"
+            class="btn btn-lg btn-link link-dark"
+            placement="top"
+            ngbTooltip="Удалить"
+            (click)="deletePlaylist()"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
+
+      <hr />
+      <div *ngFor="let track of playlist.tracks" class="mb-3">
+        <app-track-card-with-details
+          [track]="track"
+        ></app-track-card-with-details>
+      </div>
+    </ng-template>
+  </app-layout>
+</div>

@@ -7,6 +7,8 @@ import { ArtistPageComponent } from './pages/artist-page/artist-page.component';
 import { ArtistsPageComponent } from './pages/artists-page/artists-page.component';
 import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
+import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
+import { PlaylistsPageComponent } from './pages/playlists-page/playlists-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
 
@@ -56,6 +58,16 @@ const routes: Routes = [
     data: {
       isPrivate: true,
     },
+  },
+  {
+    path: 'playlists',
+    component: PlaylistsPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'playlists/:playlistId',
+    component: PlaylistPageComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

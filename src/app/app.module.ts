@@ -30,6 +30,12 @@ import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.componen
 import { SignupPopupComponent } from './layout/signup-popup/signup-popup.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { ButtonComponent } from './shared/button/button.component';
+import { CreatePlaylistPopupComponent } from './shared/create-playlist-popup/create-playlist-popup.component';
+import { PlaylistCardComponent } from './shared/playlist-card/playlist-card.component';
+import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
+import { PlaylistsPageComponent } from './pages/playlists-page/playlists-page.component';
+import { EditPlaylistPopupComponent } from './shared/edit-playlist-popup/edit-playlist-popup.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -58,6 +64,11 @@ import { ButtonComponent } from './shared/button/button.component';
     SignupPopupComponent,
     SettingsPageComponent,
     ButtonComponent,
+    CreatePlaylistPopupComponent,
+    PlaylistCardComponent,
+    PlaylistPageComponent,
+    PlaylistsPageComponent,
+    EditPlaylistPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +76,7 @@ import { ButtonComponent } from './shared/button/button.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
