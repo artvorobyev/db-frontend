@@ -1,3 +1,4 @@
+import { IPlaylistReaction } from './reactions.intrefaces';
 import { ITrackWithDetails } from './tracks.interfaces';
 
 export interface IPlaylist {
@@ -6,9 +7,7 @@ export interface IPlaylist {
   is_public: boolean;
   user_id: number;
   author_name: string;
-}
-
-export interface IPlaylistWithTracks extends IPlaylist {
+  reaction: IPlaylistReaction;
   tracks: ITrackWithDetails[];
 }
 

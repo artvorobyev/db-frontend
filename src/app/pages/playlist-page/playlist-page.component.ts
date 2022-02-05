@@ -6,7 +6,7 @@ import {
   OnDestroyMixin,
   untilComponentDestroyed,
 } from '@w11k/ngx-componentdestroyed';
-import { IPlaylistWithTracks } from '../../interfaces/playlists.interfaces';
+import { IPlaylist } from '../../interfaces/playlists.interfaces';
 import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
 import { UserService } from '../../services/user.service';
@@ -18,7 +18,7 @@ import { EditPlaylistPopupComponent } from '../../shared/edit-playlist-popup/edi
   styleUrls: ['./playlist-page.component.scss'],
 })
 export class PlaylistPageComponent extends OnDestroyMixin implements OnInit {
-  playlist: IPlaylistWithTracks;
+  playlist: IPlaylist;
   playlistId: number;
   loading = true;
   isEditable = false;
@@ -59,7 +59,7 @@ export class PlaylistPageComponent extends OnDestroyMixin implements OnInit {
     modal.componentInstance.instance = modal;
     modal.componentInstance.playlist = this.playlist;
     modal.closed.pipe(untilComponentDestroyed(this)).subscribe(
-      (playlist?: IPlaylistWithTracks) => {
+      (playlist?: IPlaylist) => {
         if (playlist) {
           this.playlist = playlist;
           this.toastService.showSuccess(

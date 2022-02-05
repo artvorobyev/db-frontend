@@ -15,10 +15,12 @@ import {
   IAddTrackToPlaylistData,
   ICreatePlaylistData,
   IPlaylist,
-  IPlaylistWithTracks,
   IUpdatePlaylistData,
 } from '../interfaces/playlists.interfaces';
-import { ITrackReaction } from '../interfaces/reactions.intrefaces';
+import {
+  IPlaylistReaction,
+  ITrackReaction,
+} from '../interfaces/reactions.intrefaces';
 import { ITracksSearchResponse } from '../interfaces/tracks.interfaces';
 import {
   ICreateUserData,
@@ -97,6 +99,18 @@ export class ApiService {
     return this.delete('track-reaction', { track_id: trackId });
   }
 
+  createPlaylistReaction(
+    data: IPlaylistReaction
+  ): Observable<IResponse<{ message: string }>> {
+    return this.post('playlist-reaction', { ...data });
+  }
+
+  deletePlaylistReaction(
+    playlistId: number
+  ): Observable<IResponse<{ message: string }>> {
+    return this.delete('playlist-reaction', { playlist_id: playlistId });
+  }
+
   createPlaylist(data: ICreatePlaylistData): Observable<IResponse<IPlaylist>> {
     return this.post('playlists', { ...data });
   }
@@ -109,7 +123,7 @@ export class ApiService {
     });
   }
 
-  getPlaylist(playlistId: number): Observable<IResponse<IPlaylistWithTracks>> {
+  getPlaylist(playlistId: number): Observable<IResponse<IPlaylist>> {
     return this.get(`playlists/${playlistId}`);
   }
 
@@ -122,7 +136,7 @@ export class ApiService {
   updatePlaylist(
     playlistId: number,
     data: IUpdatePlaylistData
-  ): Observable<IResponse<IPlaylistWithTracks>> {
+  ): Observable<IResponse<IPlaylist>> {
     return this.put(`playlists/${playlistId}`, { ...data });
   }
 

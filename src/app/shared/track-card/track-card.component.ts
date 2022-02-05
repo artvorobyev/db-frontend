@@ -37,10 +37,7 @@ export class TrackCardComponent extends OnDestroyMixin implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.track.reaction) {
-      this.isLiked = this.track.reaction.is_positive;
-      this.isDisliked = !this.track.reaction.is_positive;
-    }
+    this.resetReaction();
 
     this.playlists$ = this.userService.data$.pipe(
       map((user) => (user ? user.playlists : []))
@@ -83,6 +80,7 @@ export class TrackCardComponent extends OnDestroyMixin implements OnInit {
       },
       (error: HttpErrorResponse) => {
         this.toastService.showError(error.error.error || error.message);
+        this.resetReaction();
       }
     );
   }
@@ -124,5 +122,12 @@ export class TrackCardComponent extends OnDestroyMixin implements OnInit {
           this.toastService.showError(error.error.error || error.message);
         }
       );
+  }
+
+  private resetReaction(): void {
+    if (this.track.reaction) {
+      this.isLiked = this.track.reaction.is_positive;
+      this.isDisliked = !this.track.reaction.is_positive;
+    }
   }
 }

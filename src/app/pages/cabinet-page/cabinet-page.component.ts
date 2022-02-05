@@ -77,9 +77,7 @@ export class CabinetPageComponent extends OnDestroyMixin implements OnInit {
         return playlist.user_id === this.userService.getUser()?.id;
       }
 
-      return true;
-
-      // return filter === Number(playlist.reaction?.is_positive);
+      return filter === Number(playlist.reaction?.is_positive);
     });
   }
 

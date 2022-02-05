@@ -5,7 +5,7 @@ import {
   OnDestroyMixin,
   untilComponentDestroyed,
 } from '@w11k/ngx-componentdestroyed';
-import { IPlaylistWithTracks } from '../../interfaces/playlists.interfaces';
+import { IPlaylist } from '../../interfaces/playlists.interfaces';
 import { ITrackWithDetails } from '../../interfaces/tracks.interfaces';
 import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
@@ -21,7 +21,7 @@ export class EditPlaylistPopupComponent
 {
   instance: NgbModalRef;
   loading = false;
-  playlist: IPlaylistWithTracks;
+  playlist: IPlaylist;
 
   name: string;
   isPublic: boolean;
