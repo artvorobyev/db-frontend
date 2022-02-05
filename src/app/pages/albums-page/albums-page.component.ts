@@ -28,22 +28,28 @@ export class AlbumsPageComponent extends OnDestroyMixin implements OnInit {
   }
 
   ngOnInit(): void {
-    const query = this.route.snapshot.queryParamMap.get('q');
-    if (query) {
-      this.query = query;
-      this.apiService
-        .getAlbums(query)
-        .pipe(untilComponentDestroyed(this))
-        .subscribe(
-          (result) => {
-            this.loading = false;
-            this.albums = result.data.albums;
-          },
-          (error: HttpErrorResponse) => {
-            this.loading = false;
-            this.toastService.showError(error.error.error || error.message);
-          }
-        );
-    }
+    const query = this.route.snapshot.queryParamMap.get('q') ?? '';
+    this.query = query;
+    this.apiService
+      .getAlbums(query)
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(
+        (result) => {
+          this.loading = false;
+          this.albums = [...result.data.albums].sort(function (a, b) {
+            if (a.name < b.name) {
+              return -1;
+            }
+            if (a.name > b.name) {
+              return 1;
+            }
+            return 0;
+          });
+        },
+        (error: HttpErrorResponse) => {
+          this.loading = false;
+          this.toastService.showError(error.error.error || error.message);
+        }
+      );
   }
 }

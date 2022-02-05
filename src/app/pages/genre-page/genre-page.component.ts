@@ -5,19 +5,19 @@ import {
   OnDestroyMixin,
   untilComponentDestroyed,
 } from '@w11k/ngx-componentdestroyed';
-import { IArtist } from '../../interfaces/artists.interfaces';
+import { IGenreWithAlbums } from '../../interfaces/genres.interfaces';
 import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
 
 @Component({
-  selector: 'app-artists-page',
-  templateUrl: './artists-page.component.html',
-  styleUrls: ['./artists-page.component.scss'],
+  selector: 'app-genre-page',
+  templateUrl: './genre-page.component.html',
+  styleUrls: ['./genre-page.component.scss'],
 })
-export class ArtistsPageComponent extends OnDestroyMixin implements OnInit {
+export class GenrePageComponent extends OnDestroyMixin implements OnInit {
   loading = true;
-  query: string;
-  artists: IArtist[];
+  genreId: number;
+  genre: IGenreWithAlbums;
 
   constructor(
     private apiService: ApiService,
@@ -28,27 +28,19 @@ export class ArtistsPageComponent extends OnDestroyMixin implements OnInit {
   }
 
   ngOnInit(): void {
-    const query = this.route.snapshot.queryParamMap.get('q');
-    this.query = query ?? '';
+    this.genreId = Number(this.route.snapshot.paramMap.get('genreId'));
+
     this.apiService
-      .getArtists(query ?? '')
+      .getGenre(this.genreId)
       .pipe(untilComponentDestroyed(this))
       .subscribe(
         (result) => {
           this.loading = false;
-          this.artists = [...result.data.artists].sort(function (a, b) {
-            if (a.name < b.name) {
-              return -1;
-            }
-            if (a.name > b.name) {
-              return 1;
-            }
-            return 0;
-          });
+          this.genre = result.data;
         },
         (error: HttpErrorResponse) => {
           this.loading = false;
-          this.toastService.showError(error.message);
+          this.toastService.showError(error.error.error || error.message);
         }
       );
   }

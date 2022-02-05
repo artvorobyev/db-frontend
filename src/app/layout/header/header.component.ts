@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   OnDestroyMixin,
@@ -25,7 +26,8 @@ export class HeaderComponent extends OnDestroyMixin implements OnInit {
     private modalService: NgbModal,
     private userService: UserService,
     private apiService: ApiService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private route: ActivatedRoute
   ) {
     super();
   }
@@ -56,5 +58,9 @@ export class HeaderComponent extends OnDestroyMixin implements OnInit {
           this.toastService.showError(error.error.error || error.message);
         }
       );
+  }
+
+  isActiveUrl(path: string): boolean {
+    return this.route.snapshot.routeConfig?.path?.includes(path) ?? false;
   }
 }

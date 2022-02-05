@@ -1,0 +1,20 @@
+<div class="root">
+  <app-layout>
+    <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
+    <ng-template #loaded>
+      <h4>Альбомы в жанре</h4>
+      <h2>{{ genre.name }}</h2>
+      <div class="row mt-5 row-cols-md-4">
+        <div
+          *ngFor="let album of genre.albums"
+          class="col mb-3 d-flex flex-column"
+        >
+          <app-album-card-with-items
+            [album]="album"
+            class="d-flex flex-column flex-grow-1"
+          ></app-album-card-with-items>
+        </div>
+      </div>
+    </ng-template>
+  </app-layout>
+</div>

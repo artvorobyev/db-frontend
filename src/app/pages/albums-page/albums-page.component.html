@@ -3,7 +3,8 @@
     <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
     <ng-template #loaded>
       <ng-container *ngIf="albums.length; else albumsNotFound">
-        <h4>Альбомы по запросу «{{ query }}»</h4>
+        <h4 *ngIf="query">Альбомы по запросу «{{ query }}»</h4>
+        <h4 *ngIf="!query">Альбомы</h4>
         <div class="row mt-5 row-cols-md-4">
           <div *ngFor="let album of albums" class="col mb-3 d-flex flex-column">
             <app-album-card-with-items

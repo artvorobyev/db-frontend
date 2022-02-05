@@ -7,6 +7,8 @@ import { ArtistPageComponent } from './pages/artist-page/artist-page.component';
 import { ArtistsPageComponent } from './pages/artists-page/artists-page.component';
 import { CabinetPageComponent } from './pages/cabinet-page/cabinet-page.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
+import { GenrePageComponent } from './pages/genre-page/genre-page.component';
+import { GenresPageComponent } from './pages/genres-page/genres-page.component';
 import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
 import { PlaylistsPageComponent } from './pages/playlists-page/playlists-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
@@ -67,6 +69,16 @@ const routes: Routes = [
   {
     path: 'playlists/:playlistId',
     component: PlaylistPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'genres',
+    component: GenresPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'genres/:genreId',
+    component: GenrePageComponent,
     canActivate: [AuthGuard],
   },
 ];

@@ -3,7 +3,8 @@
     <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
     <ng-template #loaded>
       <ng-container *ngIf="artists.length; else artistsNotFound">
-        <h4>Артисты по запросу «{{ query }}»</h4>
+        <h4 *ngIf="query">Артисты по запросу «{{ query }}»</h4>
+        <h4 *ngIf="!query">Артисты</h4>
         <div class="row mt-5 row-cols-md-4">
           <div *ngFor="let artist of artists" class="col mb-3">
             <app-artist-card [artist]="artist"></app-artist-card>

@@ -36,6 +36,8 @@ import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.compo
 import { PlaylistsPageComponent } from './pages/playlists-page/playlists-page.component';
 import { EditPlaylistPopupComponent } from './shared/edit-playlist-popup/edit-playlist-popup.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { GenresPageComponent } from './pages/genres-page/genres-page.component';
+import { GenrePageComponent } from './pages/genre-page/genre-page.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     PlaylistPageComponent,
     PlaylistsPageComponent,
     EditPlaylistPopupComponent,
+    GenresPageComponent,
+    GenrePageComponent,
   ],
   imports: [
     BrowserModule,

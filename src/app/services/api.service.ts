@@ -12,6 +12,11 @@ import {
 } from '../interfaces/artists.interfaces';
 import { ILoginParams } from '../interfaces/auth.interfaces';
 import {
+  IGenre,
+  IGenreWithAlbums,
+  IGetGenresResponse,
+} from '../interfaces/genres.interfaces';
+import {
   IAddTrackToPlaylistData,
   ICreatePlaylistData,
   IPlaylist,
@@ -144,6 +149,14 @@ export class ApiService {
     playlistId: number
   ): Observable<IResponse<{ message: string }>> {
     return this.delete(`playlists/${playlistId}`);
+  }
+
+  getGenres(): Observable<IResponse<IGetGenresResponse>> {
+    return this.get('genres');
+  }
+
+  getGenre(genreId: number): Observable<IResponse<IGenreWithAlbums>> {
+    return this.get(`genres/${genreId}`);
   }
 
   get<T>(

@@ -1,0 +1,15 @@
+<div class="root">
+  <app-layout>
+    <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
+    <ng-template #loaded>
+      <h4>Жанры</h4>
+      <div class="row mt-5 row-cols-md-4">
+        <div *ngFor="let genre of genres" class="mb-3">
+          <a class="link-success" [routerLink]="['/genres/' + genre.id]">
+            {{ genre.name }}
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </app-layout>
+</div>

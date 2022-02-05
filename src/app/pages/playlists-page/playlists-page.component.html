@@ -3,7 +3,12 @@
     <app-spinner *ngIf="loading; else loaded" position="absolute"></app-spinner>
     <ng-template #loaded>
       <ng-container *ngIf="playlists.length; else playlistsNotFound">
-        <h4>Плейлисты по запросу «{{ query }}»</h4>
+        <h4 *ngIf="query; else noQueryTitle">
+          Плейлисты по запросу «{{ query }}»
+        </h4>
+        <ng-template #noQueryTitle>
+          <h4>Плейлисты</h4>
+        </ng-template>
 
         <hr />
         <div *ngFor="let playlist of playlists" class="mb-3">
